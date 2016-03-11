@@ -29,6 +29,6 @@ var numToString = function(str) {
   }
   //rejoin the numbers to a string
   var numStr = arr2.join('');
-  //return string, parsing it to an integer
+  //return string, parsing it to an integerfirstReverse
   return parseInt(numStr);
 }
