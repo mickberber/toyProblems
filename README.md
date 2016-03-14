@@ -1,1 +1,3 @@
 # toyProblems
+
+A collection of Coding challenges I have come across...
