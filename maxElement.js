@@ -18,10 +18,11 @@
 // 26
 // 91
 
-function processData(input) {
+//each element in the passed in array is a string
+function printMaxElement(arr) {
     var stack = [];
-    for(var i = 0; i < input.length; i++){
-        var current = input[i].split(' ');
+    for(var i = 0; i < arr.length; i++){
+        var current = arr[i].split(' ');
         if(current[0] === '1') {
             stack.push(current[1]);
         }
