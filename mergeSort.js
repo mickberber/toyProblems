@@ -1,26 +1,31 @@
-//Merge sort
-//Take two sorted lists and return a sorted list,
-//containing all the elements of the original two arrays
+function mergeSort(arr) {
+  if(arr.length <=1) {
+    return arr;
+  }
+  var midpoint = Math.floor(arr.length/2);
+  var leftArr = arr.slice(0, midpoint);
+  var rightArr = arr.slice(midpoint);
+  var sortedLeft = mergeSort(leftArr);
+  var sortedRight = mergeSort(rightArr);
+  return merge(sortedLeft, sortedRight);
+}
 
-function mergeSort(arr1, arr2) {
-  //sorted array that will be returned
+
+
+function merge(arr1, arr2) {
   var sorted = [];
-  //while our two input arrays have length, we still have values
-  //to push to sorted
-  while(arr1.length !== 0 || arr2.length !== 0) {
-    //compare the two values at the beginnig of each array
-    //since they are already sorted
-    //we know the smallest values in each array are at index 0
-    if(arr1[0] < arr2[0]) {
-      //push to sorted
-      sorted.push(arr1[0]);
-      //remove value to aviod duplication
-      arr1.shift();
+  var leftIndex = 0;
+  var rightIndex = 0;
+  while(leftIndex < arr1.length && rightIndex < arr2.length) {
+    if(arr1[leftIndex] < arr2[rightIndex]) {
+      sorted.push(arr1[leftIndex]);
+      leftIndex++;
     } else {
-      sorted.push(arr2[0]);
-      arr2.shift();
+      sorted.push(arr2[rightIndex]);
+      rightIndex++;
     }
   }
-  //return sorted array
+  sorted.concat(arr1.slice(leftIndex));
+  sorted.concat(arr2.slice(rightIndex));
   return sorted;
 }
