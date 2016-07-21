@@ -5,11 +5,13 @@ A palindrome is a word that is the same forward and backwards
 ex: 'tacocat', 'eevee'
 */
 
+module.exports = anagramPalindrome;
+
 function anagramPalindrome(word) {
   var letterCounts = {};
   for(var i = 0; i < word.length; i++) {
-    letterCounts[i] = letterCounts[i] || 0;
-    letterCounts[i]++
+    letterCounts[word[i]] = letterCounts[word[i]] || 0;
+    letterCounts[word[i]]++;
   }
 
   var oddAmounts = 0;
@@ -17,14 +19,11 @@ function anagramPalindrome(word) {
     if(letterCounts[letter] % 2 !== 0) {
       oddAmounts++;
       if(oddAmounts > 1) {
-        console.log(false);
-        return
+        console.log(letterCounts)
+        console.log(oddAmounts)
+        return false;
       }
     }
   }
-
-  console.log(true);
-  return
+  return true;
 }
-
-anagramPalindrome('tacocat');
